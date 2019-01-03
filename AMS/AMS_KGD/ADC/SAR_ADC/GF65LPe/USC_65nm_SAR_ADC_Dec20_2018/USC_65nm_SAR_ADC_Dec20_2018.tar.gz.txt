@@ -1,0 +1,5 @@
+Permission must be obtained from the USC POSH project Maintainer to access the 
+following private files. Please contact @USCPOSH for the necessary permissions.
+
+Private files:
+[USC_65nm_SAR_ADC_Dec20_2018.tar.gz]

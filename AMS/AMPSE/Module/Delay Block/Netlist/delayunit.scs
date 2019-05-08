@@ -1,0 +1,32 @@
+subckt Delay_Unit_Parameterized CN CP EN\<1\> EN\<2\> EN\<3\> EN\<4\> EX\<1\> EX\<2\> EX\<3\> EX\<4\> IN OUT VDD VSS 
+M22 ( OUT net366 VSS VSS ) nch_lvt_mac l=60n w=wn*fingers_inv multi=8 nf=fingers_inv sigma=1  
+M12 ( EN\<3\> VSS VSS VSS ) nch_lvt_mac l=60n w=wn*fingers_load multi=1 nf=fingers_load sigma=1  
+M17 ( EN\<3\> net366 EN\<3\> VSS ) nch_lvt_mac l=60n w=wn*fingers_load multi=4 nf=fingers_load sigma=1  
+M13 ( EN\<2\> VSS EN\<3\> VSS ) nch_lvt_mac l=60n w=wn*fingers_load multi=1 nf=fingers_load sigma=1  
+M23 ( EN\<2\> net366 EN\<2\> VSS ) nch_lvt_mac l=60n w=wn*fingers_load multi=2 nf=fingers_load sigma=1  
+M14 ( EN\<1\> VSS EN\<2\> VSS ) nch_lvt_mac l=60n w=wn*fingers_load multi=1 nf=fingers_load sigma=1  
+M24 ( EN\<1\> net366 EN\<1\> VSS ) nch_lvt_mac l=60n w=wn*fingers_load multi=1 nf=fingers_load sigma=1  
+M15 ( net369 VSS EN\<1\> VSS ) nch_lvt_mac l=60n w=wn*fingers_load multi=1 nf=fingers_load sigma=1  
+M16 ( net366 IN net369 VSS ) nch_lvt_mac l=100n w=wn*fingers_inv multi=12 nf=fingers_inv sigma=1  
+M38 ( VSS VSS VSS VSS ) nch_lvt_mac l=100n w=wn*fingers_cs multi=6 nf=fingers_cs sigma=1  
+M10 ( OUT net366 VDD VDD ) pch_lvt_mac l=60n w=wp*fingers_inv multi=16 nf=fingers_inv sigma=1  
+M6 ( EX\<3\> VDD VDD VDD ) pch_lvt_mac l=60n w=wp*fingers_load multi=1 nf=fingers_load sigma=1  
+M11 ( EX\<3\> net366 EX\<3\> VDD ) pch_lvt_mac l=60n w=wp*fingers_load multi=4 nf=fingers_load sigma=1  
+M5 ( EX\<2\> VDD EX\<3\> VDD ) pch_lvt_mac l=60n w=wp*fingers_load multi=1 nf=fingers_load sigma=1  
+M8 ( EX\<2\> net366 EX\<2\> VDD ) pch_lvt_mac l=60n w=wp*fingers_load multi=2 nf=fingers_load sigma=1  
+M4 ( EX\<1\> VDD EX\<2\> VDD ) pch_lvt_mac l=60n w=wp*fingers_load multi=1 nf=fingers_load sigma=1  
+M9 ( EX\<1\> net366 EX\<1\> VDD ) pch_lvt_mac l=60n w=wp*fingers_load multi=1 nf=fingers_load sigma=1  
+M3 ( net368 VDD EX\<1\> VDD ) pch_lvt_mac l=60n w=wp*fingers_load multi=1 nf=fingers_load sigma=1  
+M7 ( net366 IN net368 VDD ) pch_lvt_mac l=100n w=wp*fingers_inv multi=12 nf=fingers_inv sigma=1  
+M29 ( net364 VDD VDD VDD ) pch_mac l=100n w=wp*fingers_cs multi=1 nf=fingers_cs sigma=1  
+M34 ( net364 EN\<4\> VDD VDD ) pch_mac l=200n w=wp*fingers_cs multi=2 nf=fingers_cs sigma=1  
+M33 ( net368 CP net364 VDD ) pch_mac l=100n w=wp*fingers_cs multi=1 nf=fingers_cs sigma=1  
+M25 ( net368 VDD VDD VDD ) pch_mac l=100n w=wp*fingers_cs multi=1 nf=fingers_cs sigma=1  
+M32 ( net368 CP VDD VDD ) pch_mac l=100n w=wp*fingers_cs multi=16 nf=fingers_cs sigma=1  
+M27 ( VDD VDD VDD VDD ) pch_mac l=100n w=wp*fingers_cs multi=6 nf=fingers_cs sigma=1  
+M39 ( net367 VSS VSS VSS ) nch_mac l=100n w=wn*fingers_cs multi=1 nf=fingers_cs sigma=1  
+M37 ( net367 EX\<4\> VSS VSS ) nch_mac l=200n w=wn*fingers_cs multi=2 nf=fingers_cs sigma=1  
+M36 ( net369 CN net367 VSS ) nch_mac l=100n w=wn*fingers_cs multi=1 nf=fingers_cs sigma=1  
+M42 ( net369 VSS VSS VSS ) nch_mac l=100n w=wn*fingers_cs multi=1 nf=fingers_cs sigma=1  
+M35 ( net369 CN VSS VSS ) nch_mac l=100n w=wn*fingers_cs multi=16 nf=fingers_cs sigma=1  
+ends Delay_Unit_Parameterized 

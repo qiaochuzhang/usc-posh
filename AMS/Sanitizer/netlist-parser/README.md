@@ -8,7 +8,7 @@ The Netlist Parse is under development and not ready for productin use.
 ```bash
 git clone
 
-cd netlist-parser
+cd usc-posh/AMS/Sanitizer/netlist-parser
 
 make
 ```

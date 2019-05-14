@@ -1,0 +1,64 @@
+#!/usr/bin/env python
+
+import sys
+from antlr4 import *
+from netlist_parser.SpectreLexer import SpectreLexer
+from netlist_parser.SpectreParser import SpectreParser
+from posh.NetlistListener import *
+from posh.NetlistVisitor import *
+
+
+def listtostring(List):
+    st = ''
+    for i in List:
+        st = st + i
+    return st
+
+
+
+def splitsimulation(file):
+    fp = open(file,'r')
+    lines = fp.readlines()
+    mid = len(lines)
+    for i in range(0,len(lines)):
+        #print(lines[i][0:4])
+        if(lines[i][0:16] == 'simulatorOptions'):
+            mid  = i
+    #print(mid)
+    head_netlist = listtostring(lines[0:mid])
+    simulation_measure = listtostring(lines[mid:len(lines)])
+    return head_netlist,simulation_measure
+
+
+
+def main(argv):
+    input_scs = argv[1]
+    input_div = argv[2]
+
+    input_stream = FileStream(input_scs)
+    head_netlist,simulation_measure = splitsimulation(input_scs)
+    head_netlist_input_stream = InputStream(head_netlist)
+
+    lexer = SpectreLexer(head_netlist_input_stream)
+    #lexer = SpectreLexer(input_stream)
+    stream = CommonTokenStream(lexer)
+    parser = SpectreParser(stream)
+    tree = parser.netlist()
+
+    # Using a listener
+    printer = NetlistListener()
+    walker = ParseTreeWalker()
+    walker.walk(printer, tree)
+
+    # Using a visitor
+    visitor = NetlistVisitor_sanitizer(input_scs,input_div)
+    visitor.visit(tree)
+
+    newscs = input_scs.split('.')[0]+'_sanitized'+'.scs'
+    fp = open(newscs,'a')
+    fp.write(simulation_measure)
+    #print(simulation_measure)
+    fp.close()
+
+if __name__ == '__main__':
+    main(sys.argv)

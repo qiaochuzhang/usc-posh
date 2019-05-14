@@ -1,6 +1,6 @@
 # NOTE
 
-The Netlist Parse is under development and not ready for productin use.
+The Netlist Parse is under development and not ready for production use.
 
 
 # Development
